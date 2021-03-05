@@ -7,6 +7,7 @@ setup(name='recepies',
     author_email='gabrielfr.borges@gmail.com',
     install_requires=[
     'flask',
+    'gunicorn',
     'pytest',
-    'gunicorn'
+    'coverage'
     ])

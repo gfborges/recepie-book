@@ -1,3 +1,5 @@
+README.md
+setup.cfg
 setup.py
 recepies.egg-info/PKG-INFO
 recepies.egg-info/SOURCES.txt
