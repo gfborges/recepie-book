@@ -1,9 +1,0 @@
-README.md
-setup.cfg
-setup.py
-recepies.egg-info/PKG-INFO
-recepies.egg-info/SOURCES.txt
-recepies.egg-info/dependency_links.txt
-recepies.egg-info/requires.txt
-recepies.egg-info/top_level.txt
-test/test_health.py
