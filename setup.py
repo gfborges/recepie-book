@@ -9,5 +9,6 @@ setup(name='recepies',
     'flask',
     'gunicorn',
     'pytest',
-    'coverage'
+    'coverage',
+    'blinker'
     ])

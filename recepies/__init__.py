@@ -10,7 +10,11 @@ def setup_config(app, test_config):
 def create_app(test_config=None):
     app = Flask(__name__)
     setup_config(app, test_config)
+    
     @app.route('/health')
     def health():
         return "", 200
+
+    from recepies import index
+    app.register_blueprint(index.bp)
     return app
