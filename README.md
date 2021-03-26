@@ -25,7 +25,7 @@ $ ./serve
 The tests run with the command `pytest`, for coverage details run `coverage report` or `coverage` 
 
 ### Presentations
- * [Prototype](https://youtu.be/5PQMQodrAB8)
+ * [Prototype](https://youtu.be/2MtCiCcfWuE)
 
 ### Author
 [Gabriel Fr. Borges](https://github.com/gfborges)

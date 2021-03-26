@@ -6,6 +6,7 @@
 
 .icons * {
     margin: auto 2px auto;
+    vertical-align: middle;
 }
 
 .delete:hover {
