@@ -6,7 +6,7 @@ Install required python libraries for the setup.
 ```
 $ python3 -m pip install virtualenv setuptools 
 ```
-Create a virtualenv and active it (windows not suported, please use a VM or WSL)
+Create a virtual enviroment (windows users should use `./env/Scripts/activate.bat`)
 ```
 $ python3 -m virtualenv env
 $ source env/bin/activate
@@ -21,6 +21,8 @@ The aplication runs by defult in the localhost:5000. To run the aplication execu
 ```
 $ ./serve
 ```
+The scipt above does not support windows, use `(env)$ python recepie/main.py` to run without with flask. 
+
 ### Test
 The tests run with the command `pytest`, for coverage details run `coverage report` or `coverage` 
 
