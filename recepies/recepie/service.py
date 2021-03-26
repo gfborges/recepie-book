@@ -1,7 +1,7 @@
 from typing import List, Dict
 
-// TODO: split services
-// TODO: inject db
+# TODO: split services
+# TODO: inject db
 class RecepieService():
     __recepies = [{
         "name": "Macarrão",
