@@ -4,6 +4,14 @@
     object-fit: cover;
 }
 
-.description {
-    padding-left: 15px;
+.icons * {
+    margin: auto 2px auto;
+}
+
+.delete:hover {
+    color: crimson;
+}
+
+.edit:hover {
+    color: goldenrod;
 }

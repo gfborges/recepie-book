@@ -2,6 +2,10 @@
 This is a Recepie book web app project made in Flask.
 
 ### Install 
+Install required python libraries for the setup.
+```
+$ python3 -m pip install virtualenv setuptools 
+```
 Create a virtualenv and active it (windows not suported, please use a VM or WSL)
 ```
 $ python3 -m virtualenv env

@@ -6,7 +6,15 @@
 
 {% block content %}
     <img class="detail-img" src="{{ context.image }}">
-    <h1>{{ context.name | title }}</h1>
+    <div class="d-flex justify-content-between">
+            <div>
+                <h1>{{ context.name | title }}</h1>
+            </div>
+            <div class="d-flex justify-content-end icons">
+                <i class="far fa-trash-alt delete"></i>
+                <i class="fa fa-edit edit"></i>
+            </div>
+    </div>
     <p> {{ context.summary }} </p>
     <div class="description">
         {% if context.ingredients %}
