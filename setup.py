@@ -5,6 +5,7 @@ setup(name='recepies',
     description='Book recepie web app',
     author='Gabriel Fr. Borges de Carvalho',
     author_email='gabrielfr.borges@gmail.com',
+    python_requires='>=3.8.6',
     install_requires=[
         'flask',
         'gunicorn',
