@@ -36,11 +36,14 @@
     </div>
     <div id="container__creation" hidden>
         <form action="/ingredient/create" method="post">
-            <div class="form-group">
+            <div class="row g-3">
                 <input type="text" name="name" id="name" placeholder="Name" autocomplete="off" required>
             </div>
-            <div class="form-group">
+            <div class="row g-3">
                 <input type="text" name="summary" id="summary" placeholder="Summary" autocomplete="off" required>
+            </div>
+            <div class="row g-3">
+                <input type="text" name="image" id="image-input" placeholder="Image Link" autocomplete="off">
             </div>
             {% if context.type == "recepie" %}
                 <ul>
