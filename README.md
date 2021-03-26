@@ -15,6 +15,7 @@ Install the dependencies with the following command:
 ```
 (env)$ pip install -e .
 ```
+Using this instead of `pip install -r requirements.txt` allows the project to ensure python version and use absolute imports.
 To turn off the virtual enviroment run `deactivate`
 ### Aplication
 The aplication runs by defult in the localhost:5000. To run the aplication execute the shell script or copy the commando to the terminal
