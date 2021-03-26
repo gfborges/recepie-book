@@ -1,2 +1,2 @@
-gunicorn -w 4 --reload -b localhost:5000 "recepies:create_app()"
-
+source ./env/bin/activate
+gunicorn -w 4 --reload  --reload-extra-file ./recepies -b localhost:5000 "recepies:create_app()"

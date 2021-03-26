@@ -1,4 +1,6 @@
 from flask import Flask
+from flask_injector import FlaskInjector
+from recepies.dependencies import configure
 
 def setup_config(app, test_config):
     if test_config is None:
@@ -15,6 +17,8 @@ def create_app(test_config=None):
     def health():
         return "", 200
 
-    from recepies import index
-    app.register_blueprint(index.bp)
+    from recepies.recepie import router as recepie_router
+    app.register_blueprint(recepie_router.bp)
+
+    FlaskInjector(app=app, modules=[configure])
     return app

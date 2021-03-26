@@ -1,0 +1,34 @@
+{% extends 'index.html' %}
+
+{% block extralinks %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/detail.css') }}">
+{% endblock %}
+
+{% block content %}
+    <img class="detail-img" src="{{ context.image }}">
+    <h1>{{ context.name | title }}</h1>
+    <p> {{ context.summary }} </p>
+    <div class="description">
+        {% if context.ingredients %}
+            <div class="ingredients">
+                <h3>Ingredients</h3>
+                <ul>
+                    {% for ingredient in context.ingredients %}
+                        <li> {{ ingredient }} </li>
+                    {% endfor %}            
+                </ul>
+            </div>
+        {% endif%}
+    
+        {% if context.steps %}
+            <div class="steps">
+                <h3>Steps</h3>
+                <ol>
+                    {% for step in context.steps %}
+                        <li> {{ step }} </li>
+                    {% endfor %}    
+                </ol>
+            </div>
+        {% endif %}
+    </div>
+{% endblock%}

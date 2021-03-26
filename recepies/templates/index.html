@@ -1,11 +1,49 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<html>
-    <head>
-        <title> Recepies </title>
-    </head>
-    <body>
-        <h1> Hello, client !</h1>
-        <p> This is a new template ! </p>
-    </body>
+    <!-- region imports -->
+    <script src="https://use.fontawesome.com/ec49e8c507.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <!-- endregion imports -->
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css')}}">
+    <link rel="shortcut icon" type="image/jpg" href="{{ url_for('static', filename='img/favicon.ico') }}"/>
+    {% block extralinks %}{% endblock %}
+    <title>Recepies {% block title %}{% endblock %} </title>
+</head>
+<body>
+    <header>
+        <a href="/"><img class="logo" src="#" alt="logo"></a>
+
+        <form action="/search" method="GET">
+            <div>
+                <input type="text" name="query" id="query">
+                <button type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </form>
+
+        <nav>
+            <ul class="nav__links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/recepie">Recepies</a></li>
+                <li><a href="/ingredient">Ingredients</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+    {% block extrabody %}{% endblock %}
+    <!-- scripts area -->
+    {%block script%}{% endblock %}
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
 </html>

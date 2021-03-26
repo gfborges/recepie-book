@@ -1,0 +1,42 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: xx-large;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10%;
+    background-color: #ddd;
+    overflow: hidden;
+}
+
+.nav__links {
+    list-style: none;
+}
+
+.nav__links li {
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.nav__links li a {
+    color: #000;
+    transition: all 0.3s ease 0s;
+    text-decoration: none;
+}
+
+.nav__links a:hover {
+    color: deepskyblue;
+}
+
+#content {
+    margin: auto;
+    max-width: 70vw;
+}

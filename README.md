@@ -2,30 +2,21 @@
 This is a Recepie book web app project made in Flask.
 
 ## INSTALL
-Create a virtualenv and active it:
-On Windows:
+Create a virtualenv and active it (windows not suported, please use a VM or WSL)
 ```
-$ py -3 -m venv env
-$ env\Scripts\activate.bat
-```
-On Linux:
-```
-$ python3 -m venv env
+$ python3 -m virtualenv env
 $ source env/bin/activate
 ```
-
-### Project
+Install the dependencies with the following command:
 ```
-$ pip install -e .
+(env)$ pip install -e .
 ```
-
+To turn off the virtual enviroment run `$ deactivate`
 ### Aplication
-The aplication can runs by defult in the port 5000. To run the apliction:
-On Linux (make shure you have permission to run the file):
+The aplication runs by defult in the localhost:5000. To run the aplication execute the shell script or copy the commando to the terminal
 ```
 $ ./serve
 ```
-On Windows, copy the content of ./serve and run it on prompt.
 ### Test
 The tests run with the command `pytest`, for coverage details run `coverage report` or `coverage` 
 ## AUTHOR

@@ -6,9 +6,10 @@ setup(name='recepies',
     author='Gabriel Fr. Borges de Carvalho',
     author_email='gabrielfr.borges@gmail.com',
     install_requires=[
-    'flask',
-    'gunicorn',
-    'pytest',
-    'coverage',
-    'blinker'
+        'flask',
+        'gunicorn',
+        'pytest',
+        'coverage',
+        'blinker',
+        'flask-injector',
     ])

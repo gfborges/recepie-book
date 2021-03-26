@@ -1,0 +1,89 @@
+{% extends 'index.html' %}
+
+{% block title %} - Home page {% endblock %}
+
+{% block extralinks %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/entry.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/creation.css') }}">
+{% endblock %}
+
+{% block content %}
+    <h1>Welcome to recepie book !</h1>
+    {% if context.type %}
+        <div class="new-entry">
+            <p>
+                Create new a {{ context.type }}
+                <button class=" btn btn-primary" onclick="openCreation('{{ context.type }}')">new</button>
+            </p>
+        </div>
+    {% endif %}
+    <div class="entry-list">
+        {% for entry in context["entries"] %}
+            <div class="entry" onclick="location.href='{{ entry.link }}';">
+                <div class="entry-img-wrapper">
+                    <img src="{{ entry.image }}" class="entry-img">
+                </div>
+                <h3> {{ entry['name'] | title }}</h3>
+                <p class="entry-date">{{ entry['date']}}</p>
+                <p class="entry-summary">{{ entry['summary']  | truncate(40)}}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block extrabody %}
+    <div id="shadow__creation" hidden onclick="closeCreation()">
+    </div>
+    <div id="container__creation" hidden>
+        <form action="/ingredient/create" method="post">
+            <div class="form-group">
+                <input type="text" name="name" id="name" placeholder="Name" autocomplete="off" required>
+            </div>
+            <div class="form-group">
+                <input type="text" name="summary" id="summary" placeholder="Summary" autocomplete="off" required>
+            </div>
+            {% if context.type == "recepie" %}
+                <ul>
+                    <li> Tomate </li>
+                    <li> Macarrão </li>
+                    <li> Carne </li>
+                </ul>
+                <div class="row g-3">
+                    <div class="col-auto">
+                        <div class="dropdown show">
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Ingredient
+                            </a>
+                            
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" href="#">Tomate</a>
+                                <a class="dropdown-item" href="#">Macarrão</a>
+                                <a class="dropdown-item" href="#">Carne</a>
+                                <a class="dropdown-item" href="#">Limão</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <input class= type="text" name="quantity" id="quantity" placeholder="Quantity" autocomplete="off" required style="display: inline-block;">
+                    </div>
+                    <div class="col-auto">
+                        <button id="btn btn-secondary add-step" onclick="addIngredient()">Add</button>
+                    </div>
+                </div>
+                <div class="row g-3">
+                    <div class="col-auto">
+                        <input type="text" name="step" id="step" placeholder="Step" autocomplete="off" required style="display: inline-block;">
+                    </div>
+                    <div class="col-auto">
+                        <button id=" btn btn-secondary add-step" onclick="addStep()">Add</button>
+                    </div>
+                </div>
+            {% endif %}
+            <button class="btn btn-primary" type="submit" value="submit">create</button>
+        </form>
+    </div>
+{% endblock%}
+
+{% block script %}
+    <script src="{{ url_for('static', filename='js/creation.js') }}"></script>
+{% endblock %}
