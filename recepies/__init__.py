@@ -19,7 +19,6 @@ def create_app(test_config=None):
     setup_config(app, test_config)
     from recepies.database import init_db
     init_db(app, db)
-    print(app.config)
     @app.route('/health')
     def health():
         return "", 200
