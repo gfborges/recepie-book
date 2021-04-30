@@ -1,1 +1,1 @@
-web: gunicorn -w 4 ./recepies -b localhost:5000 "recepies:create_app()"
+web: gunicorn -w 4 recepies:create_app
