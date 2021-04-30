@@ -13,7 +13,6 @@ def setup_config(app, test_config):
 def create_app(test_config=None):
     app = Flask(__name__)
     setup_config(app, test_config)
-    print(Config.DEBUG)
     from recepies.database import init_db
     init_db()
     @app.route('/health')
