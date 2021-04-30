@@ -21,7 +21,7 @@ py==1.10.0
 pylint==2.7.1
 pyparsing==2.4.7
 pytest==6.2.2
--e git+git@github.com:gfborges/recepie-book.git@c15afdb947137871f5bba6ad4392b15a8f555145#egg=recepies
+-e .
 toml==0.10.2
 typed-ast==1.4.2
 typing-extensions==3.7.4.3

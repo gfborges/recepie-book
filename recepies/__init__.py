@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_injector import FlaskInjector
 from recepies.dependencies import configure
+from recepies.config import Config
 
 def setup_config(app, test_config):
     if test_config is None:
@@ -12,7 +13,9 @@ def setup_config(app, test_config):
 def create_app(test_config=None):
     app = Flask(__name__)
     setup_config(app, test_config)
-    
+    print(Config.DEBUG)
+    from recepies.database import init_db
+    init_db()
     @app.route('/health')
     def health():
         return "", 200
