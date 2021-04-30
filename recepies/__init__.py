@@ -10,11 +10,9 @@ def setup_config(app, test_config):
         app.config.update(test_config)
     return app
 
-def create_app(arg, test_config=None):
-    print(test_config, arg)
-    print(test_config, arg)
+def create_app(test_config=None):
     app = Flask(__name__)
-    setup_config(app, arg)
+    setup_config(app, test_config)
     print(Config.DEBUG)
     from recepies.database import init_db
     init_db()
