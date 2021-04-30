@@ -10,7 +10,7 @@ app = Flask(__name__)
  
 def setup_config(app, test_config):
     if test_config is None:
-        app.config.from_pyfile("config.py", silent=True)
+        app.config.from_object(Config)
     else:
         app.config.update(test_config)
     return app
@@ -18,6 +18,8 @@ def setup_config(app, test_config):
 def create_app(test_config=None):
     setup_config(app, test_config)
     from recepies.database import init_db
+    init_db(app, db)
+    print(app.config)
     @app.route('/health')
     def health():
         return "", 200
