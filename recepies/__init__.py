@@ -10,7 +10,9 @@ def setup_config(app, test_config):
         app.config.update(test_config)
     return app
 
-def create_app(test_config=None):
+def create_app(test_config=None, arg):
+    print(test_config, arg)
+    print(test_config, arg)
     app = Flask(__name__)
     setup_config(app, test_config)
     print(Config.DEBUG)
