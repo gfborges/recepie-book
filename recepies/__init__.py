@@ -14,12 +14,14 @@ def setup_config(app, test_config):
 
 def create_app(test_config=None):
     setup_config(app, test_config)
+
     from recepies.database import init_db
     init_db(app)
+
     @app.route('/health')
     def health():
         return "", 200
-
+    
     from recepies.recepie import router as recepie_router
     app.register_blueprint(recepie_router.bp)
 
