@@ -12,13 +12,7 @@ class Recepie(db.Model):
     image = Column(String(64))
     summary = Column(String(120))
     createdAt = Column(DateTime, default=datetime.utcnow)
-    ingredients = relationship("Ingredient", secondary=RecepieIngredient, uselist=True)
+    ingredients = relationship("RecepieIngredient", uselist=True)
 
     def __repr__(self):
         return f'<Recepie.{self.id} {self.name}>'
-    
-    @staticmethod
-    def save(*recepies):
-        db.session.add_all(recepies)
-        db.session.commit()
-
