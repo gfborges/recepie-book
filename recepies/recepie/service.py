@@ -1,4 +1,7 @@
 from typing import List, Dict
+from injector import inject
+from recepies.recepie.recepie_repository import RecepieRepository
+from recepies.recepie.ingredient import Ingredient
 
 # TODO: split services
 # TODO: inject db
@@ -24,6 +27,10 @@ class RecepieService():
         "link": "/recepie/0",
     },]
 
+    @inject
+    def __init__(self, recepieRepository: RecepieRepository):
+        self.recepieRepository = recepieRepository
+
     __ingredients = [{
         "name": "limão",
         "summary": "fruta ácida",
@@ -36,13 +43,13 @@ class RecepieService():
         return self.__recepies
 
     def get_recepie(self, id) -> Dict:
-        return self.__recepies[id]
+        return self.recepieRepository.get(id)
     
     def get_ingredients(self) -> List[Dict]:
         return self.__ingredients
     
     def get_ingredient(self, id) -> List[Dict]:
-        return self.__ingredients[0]
+        return Ingredient.query.get(id)
     
     def get_all(self) -> List[Dict]:
         return [*self.get_recepies(), *self.get_ingredients()]
