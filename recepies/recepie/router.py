@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request
 from injector import inject
 from recepies.recepie.service import RecepieService
+from recepies.error import NotFound
 bp = Blueprint("index", __name__)
 
 @inject
@@ -20,7 +21,10 @@ def recepies(service: RecepieService):
 @bp.route("/recepie/<int:id>")
 def recepie(id, service: RecepieService):
     ctx = service.get_recepie(id)
-    return render_template("detail.html", context=ctx)
+    if ctx != None:
+        return render_template("detail.html", context=ctx)
+    return f"Recepie {id} not found", 404
+
 
 @inject
 @bp.route("/ingredient", methods=["GET"])
@@ -32,7 +36,9 @@ def ingredients(service: RecepieService):
 @bp.route("/ingredient/<int:id>")
 def ingredient(id, service: RecepieService):
     ctx = service.get_ingredient(id)
-    return render_template("detail.html", context=ctx)
+    if ctx != None:
+        return render_template("detail.html", context=ctx)
+    return f"Ingredient {id} not found"
 
 @inject
 @bp.route("/search")
