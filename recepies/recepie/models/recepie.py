@@ -1,7 +1,6 @@
 from sqlalchemy import Column, Integer, String, DateTime
 from sqlalchemy.orm import relationship
 from datetime import datetime
-from recepies.recepie.recepie_ingredient import RecepieIngredient
 from recepies.database import db
 
 class Recepie(db.Model):

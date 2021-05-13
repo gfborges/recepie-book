@@ -22,8 +22,12 @@ def create_app(test_config=None):
     def health():
         return "", 200
     
-    from recepies.recepie import router as recepie_router
-    app.register_blueprint(recepie_router.bp)
+    from recepies.recepie.routers import ingredient_router, recepie_router
+    app.register_blueprint(recepie_router)
+    app.register_blueprint(ingredient_router)
+    
+    from recepies.index import router as index_router
+    app.register_blueprint(index_router)
 
     FlaskInjector(app=app, modules=[configure])
     return app
