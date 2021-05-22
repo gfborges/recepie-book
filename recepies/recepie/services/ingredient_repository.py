@@ -12,4 +12,8 @@ class IngredientRepository():
         return Ingredient.query.get(id)
     
     def find_many(self, **kwargs):
-        return Ingredient.query.all()
+        query = Ingredient.query
+        if kwargs.get("name"):
+            result = query.filter(Ingredient.name.ilike(f'%{kwargs.get("name")}%'))
+            return result
+        return query.all()

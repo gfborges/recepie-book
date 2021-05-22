@@ -16,5 +16,8 @@ class FoodService():
             *self.ingredientService.find_many()
         ]
     
-    def search(self, query: str)-> List[Union[Ingredient, Recepie]]:
-        return self.find_all()
+    def find_many(self, query: str)-> List[Union[Ingredient, Recepie]]:
+        return [
+            *self.recepieService.find_many(name=query),
+            *self.ingredientService.find_many(name=query)
+        ]

@@ -17,5 +17,5 @@ def home(service: FoodService):
 @router.route("/search")
 def search(service: FoodService):
     ctx = {}
-    ctx["entries"] = service.find_all()
+    ctx["entries"] = service.find_many(request.args.get("query"))
     return render_template("home.html", context=ctx)

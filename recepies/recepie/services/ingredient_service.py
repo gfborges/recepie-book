@@ -12,4 +12,5 @@ class IngredientService():
         return self.ingredientRepository.find_one(id)
     
     def find_many(self, **kwargs) -> List[Ingredient]:
+        print(kwargs)
         return self.ingredientRepository.find_many(**kwargs)
