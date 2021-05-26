@@ -22,13 +22,15 @@ The aplication runs by defult in the localhost:5000. To run the aplication execu
 ```
 $ ./serve
 ```
-The scipt above does not support windows, use `(env)$ python recepie/main.py` to run without with flask. 
+The scipt above does not support windows, use `(env)$ python recepie/main.py` to run without with guinicorn. 
+### Database
+To config the persistence, run the `config.sql` and `schema.sql` scripts.
 
 ### Test
 The tests run with the command `pytest`, for coverage details run `coverage report` or `coverage` 
 
 ### Presentations
  * [Prototype](https://youtu.be/2MtCiCcfWuE)
-
+ * [2ºPresentation]()
 ### Author
 [Gabriel Fr. Borges](https://github.com/gfborges)
