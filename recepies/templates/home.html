@@ -19,7 +19,7 @@
     {% endif %}
     <div class="entry-list">
         {% for entry in context["entries"] %}
-            <div class="entry" onclick="location.href='{{ entry.link }}';">
+            <div class="entry" onclick="location.replace('{{ entry.link }}');">
                 <div class="entry-img-wrapper">
                     <img src="{{ entry.image }}" class="entry-img">
                 </div>
@@ -32,61 +32,66 @@
 {% endblock %}
 
 {% block extrabody %}
-    <div id="shadow__creation" hidden onclick="closeCreation()">
+    <div id="app_shadow" class="shadow__creation" hidden onclick="closeCreation()">
     </div>
-    <div id="container__creation" hidden>
-        <form action="/ingredient/create" method="post">
+    <div class="container__creation" id="app" hidden>
+        <h1 id="title">{{ context.type | title }}</h1>
+        <form action="/{{ context.type }}/create" method="post">
             <div class="row g-3">
-                <input type="text" name="name" id="name" placeholder="Name" autocomplete="off" required>
+                <input type="text" name="name" id="name" placeholder="Name" autocomplete="off" v-model="name" required>
             </div>
             <div class="row g-3">
-                <input type="text" name="summary" id="summary" placeholder="Summary" autocomplete="off" required>
+                <input type="text" name="summary" id="summary" placeholder="Summary" autocomplete="off" v-model="summary" required>
             </div>
             <div class="row g-3">
-                <input type="text" name="image" id="image-input" placeholder="Image Link" autocomplete="off">
+                <input type="text" name="image" id="image-input" placeholder="Image Link" v-model="image" autocomplete="off">
             </div>
             {% if context.type == "recepie" %}
                 <ul>
-                    <li> Tomate </li>
-                    <li> Macarrão </li>
-                    <li> Carne </li>
+                    <li v-for="(ingredient, name) in ingredients" > [[ name ]] x[[ ingredient.quantity ]] </li>
                 </ul>
-                <div class="row g-3">
+                <div class="row g-3 mb-2 mr-0 ml-0">
                     <div class="col-auto">
                         <div class="dropdown show">
                             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Ingredient
+                                [[ selectedIngredient.name || "Ingredients" ]]
                             </a>
                             
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="#">Tomate</a>
-                                <a class="dropdown-item" href="#">Macarrão</a>
-                                <a class="dropdown-item" href="#">Carne</a>
-                                <a class="dropdown-item" href="#">Limão</a>
+                                <a 
+                                    v-for="ingredient in ingredientOptions"
+                                    :key="ingredient.id"
+                                    class="dropdown-item"
+                                    href="#"
+                                    v-on:click="selectIngredient(ingredient)">[[ ingredient.name ]]</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-auto">
-                        <input class= type="text" name="quantity" id="quantity" placeholder="Quantity" autocomplete="off" required style="display: inline-block;">
+                    <div class="col-auto mr-0">
+                        <input class="" type="number" v-model="quantity" name="quantity" id="quantity" placeholder="Quantity" autocomplete="off" required style="display: inline-block;">
                     </div>
-                    <div class="col-auto">
-                        <button id="btn btn-secondary add-step" onclick="addIngredient()">Add</button>
+                    <div class="col-auto mr-0">
+                        <button class="btn btn-secondary" id="add-step"  v-on:click="addIngredient()">Add</button>
                     </div>
                 </div>
-                <div class="row g-3">
+                <ol>
+                    <li v-for="step in steps" > [[ step ]] </li>
+                </ol>
+                <div class="row g-3 mr-0 ml-0">
                     <div class="col-auto">
-                        <input type="text" name="step" id="step" placeholder="Step" autocomplete="off" required style="display: inline-block;">
+                        <input type="textarea" name="step" v-model="currentStep" id="step" placeholder="Step" autocomplete="off" required style="display: inline-block;">
                     </div>
                     <div class="col-auto">
-                        <button id=" btn btn-secondary add-step" onclick="addStep()">Add</button>
+                        <button class="btn btn-secondary" id="add-step" v-on:click="addStep">Add</button>
                     </div>
                 </div>
             {% endif %}
-            <button class="btn btn-primary" type="submit" value="submit">create</button>
+            <button class="btn btn-primary" v-on:click="submit">create</button>
         </form>
     </div>
 {% endblock%}
 
 {% block script %}
     <script src="{{ url_for('static', filename='js/creation.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/create_ingredient.js') }}"></script>
 {% endblock %}

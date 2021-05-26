@@ -5,8 +5,13 @@ from typing import List
 class IngredientRepository():
     def save(self, ingredient: Ingredient)-> Ingredient:
         db.session.add(ingredient)
-        db.session.commit(ingredient)
+        db.session.commit()
         return ingredient
+
+    def delete(self, id: int):
+        print(f'{id}')
+        Ingredient.query.filter(Ingredient.id == id).delete()
+        db.session.commit()
     
     def find_one(self, id: int) -> List[Ingredient]:
         return Ingredient.query.get(id)

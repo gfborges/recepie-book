@@ -34,4 +34,5 @@ setup(name='recepies',
           "Flask-Migrate",
           "Flask-SQLAlchemy",
           "Flask-Script",
+          "mysqlclient",
       ])

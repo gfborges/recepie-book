@@ -1,7 +1,7 @@
 from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
 
-from recepies import db
+from recepies.database import db
 from wsgi import app
 
 migrate = Migrate(app, db)

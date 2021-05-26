@@ -8,3 +8,7 @@ class RecepieIngredient(db.Model):
     id_ingredient = db.Column(db.Integer, db.ForeignKey("ingredients.id"), primary_key=True)
     quantity = db.Column(db.Integer)
     ingredient = relationship("Ingredient", uselist=False)
+
+    def __init__(self, id_ingredient:int, quantity: int):
+        self.id_ingredient = id_ingredient
+        self.quantity = quantity

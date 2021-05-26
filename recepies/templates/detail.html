@@ -11,7 +11,7 @@
                 <h1>{{ context.name | title }}</h1>
             </div>
             <div class="d-flex justify-content-end icons">
-                <i class="far fa-trash-alt delete"></i>
+                <i id="delete" class="far fa-trash-alt delete" uri="{{context.link}}/delete"></i>
                 <i class="fa fa-edit edit"></i>
             </div>
     </div>
@@ -22,8 +22,8 @@
                 <h3>Ingredients</h3>
                 <ul>
                     {% for ingredient in context.ingredients %}
-                        <li> {{ ingredient }} </li>
-                    {% endfor %}            
+                        <li> {{ ingredient.name }} x{{ ingredient.quantity }} </li>
+                    {% endfor %}
                 </ul>
             </div>
         {% endif%}
@@ -40,3 +40,7 @@
         {% endif %}
     </div>
 {% endblock%}
+
+{% block script %}
+    <script src="{{ url_for('static', filename='js/detail.js') }}"></script>
+{% endblock %}

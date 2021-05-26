@@ -1,23 +1,18 @@
 function openCreation(type) {
-    const shadow = document.getElementById("shadow__creation");
-    const container = document.getElementById("container__creation");
+    const shadow = document.getElementById("app_shadow");
+    const app = document.getElementById("app");
     shadow.hidden = false;
-    container.hidden = false;
+    app.hidden = false;
 }
 
 function closeCreation() {
-    const shadow = document.getElementById("shadow__creation");
-    const container = document.getElementById("container__creation");
+    const shadow = document.getElementById("app_shadow");
+    const app = document.getElementById("app");
     shadow.hidden = true;
-    container.hidden = true;
+    app.hidden = true;
 }
 
 function addStep() {
     const step = document.querySelector("#step");
-    step.value = "";
-}
-
-function addIngredient() {
-    const step = document.querySelector("#quantity");
     step.value = "";
 }
