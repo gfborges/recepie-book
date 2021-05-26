@@ -9,6 +9,7 @@ class RecepieRepository:
 
     def delete(self, id:int):
         Recepie.query.filter(Recepie.id == id).delete()
+        db.session.commit()
 
     def find_one(self, id: int) -> Recepie:
         return Recepie.query.get(id)

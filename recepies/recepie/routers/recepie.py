@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, request
+from flask.json import jsonify
 from injector import inject
 from recepies.recepie import services
 from recepies.recepie.services import RecepieService
@@ -17,7 +18,8 @@ def recepies(service: RecepieService):
 @router.route("/create", methods=["POST"])
 def create(service: RecepieService):
     recepie = request.get_json(force=True)
-    return service.save(recepie)
+    recepie = service.save(recepie)
+    return jsonify(recepie.to_json())
 
 @inject
 @router.route("/<int:id>/delete", methods=["POST"])

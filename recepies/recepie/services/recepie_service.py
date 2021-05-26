@@ -14,7 +14,6 @@ class RecepieService():
         return self.recepieRepository.save(recepie)
     
     def delete(self, id:int):
-        
         return self.recepieRepository.delete(id)
 
     def find_one(self, id) -> Recepie:

@@ -77,8 +77,8 @@ CREATE TABLE `recepies_ingredients` (
   `quantity` int DEFAULT NULL,
   PRIMARY KEY (`id_recepie`,`id_ingredient`),
   KEY `id_ingredient` (`id_ingredient`),
-  CONSTRAINT `recepies_ingredients_ibfk_1` FOREIGN KEY (`id_ingredient`) REFERENCES `ingredients` (`id`),
-  CONSTRAINT `recepies_ingredients_ibfk_2` FOREIGN KEY (`id_recepie`) REFERENCES `recepies` (`id`)
+  CONSTRAINT `recepies_ingredients_ibfk_1` FOREIGN KEY (`id_ingredient`) REFERENCES `ingredients` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `recepies_ingredients_ibfk_2` FOREIGN KEY (`id_recepie`) REFERENCES `recepies` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -96,7 +96,7 @@ CREATE TABLE `recepies_steps` (
   `order` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_recepie` (`id_recepie`),
-  CONSTRAINT `recepies_steps_ibfk_1` FOREIGN KEY (`id_recepie`) REFERENCES `recepies` (`id`)
+  CONSTRAINT `recepies_steps_ibfk_1` FOREIGN KEY (`id_recepie`) REFERENCES `recepies` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -109,4 +109,4 @@ CREATE TABLE `recepies_steps` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-25 22:47:10
+-- Dump completed on 2021-05-25 23:30:04

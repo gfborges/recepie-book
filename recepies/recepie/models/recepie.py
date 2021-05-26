@@ -14,7 +14,7 @@ class Recepie(db.Model):
     image = Column(Text)
     summary = Column(Text(120))
     createdAt = Column(DateTime, default=datetime.utcnow)
-    ingredients = relationship("RecepieIngredient", uselist=True)
+    ingredients = relationship("RecepieIngredient", uselist=True, cascade="all, delete-orphan")
     steps = relationship("RecepieStep", uselist=True, cascade="all, delete-orphan")
 
     def __repr__(self):
