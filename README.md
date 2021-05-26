@@ -32,5 +32,7 @@ The tests run with the command `pytest`, for coverage details run `coverage repo
 ### Presentations
  * [Prototype](https://youtu.be/2MtCiCcfWuE)
  * [Persistence](https://youtu.be/rZ5X5Vafx8M)
+    * [clarification](https://youtu.be/9HNnyOEnXLk)
+
 ### Author
 [Gabriel Fr. Borges](https://github.com/gfborges)
